@@ -1,287 +1,386 @@
-import { Button } from "@/components/ui/button"
+"use client"
+
+import { DocLayout } from "@/components/doc-layout"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, ArrowRight, Book, Network, Layers, Zap, Bitcoin, Shield } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Book, Bitcoin, Network, Shield, Zap, Layers, ExternalLink, Code, ArrowRight, Server, Database, Lock, Globe, FileText, GitBranch, Workflow, CheckCircle } from "lucide-react"
 import Link from "next/link"
 
 export default function IntroductionPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -inset-10 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        </div>
-      </div>
-
-      {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <Network className="h-8 w-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 h-8 w-8 text-blue-400 animate-ping opacity-20">
-                  <Network className="h-8 w-8" />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  RGB++ Protocol
-                </h1>
-                <p className="text-xs text-gray-400">Technical Introduction</p>
-              </div>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link
-                href="/"
-                className="text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-105 group"
-              >
-                <ArrowLeft className="h-4 w-4 inline mr-1 group-hover:-translate-x-1 transition-transform duration-300" />
-                Back to Home
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-8 relative z-10">
-        {/* Breadcrumb */}
-        <div className="flex items-center space-x-2 text-sm text-gray-400 mb-8 animate-fade-in-up">
-          <Link href="/" className="hover:text-blue-400 transition-colors duration-300">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-white">Technical Introduction</span>
-        </div>
-
-        {/* Page Header */}
-        <div className="mb-16 text-center animate-fade-in-up animation-delay-200">
-          <Badge className="mb-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border-blue-500/30 hover:scale-105 transition-transform duration-300">
-            <Bitcoin className="w-4 h-4 mr-2 animate-spin-slow" />
-            Technical Overview
-          </Badge>
-          <h1 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-            RGB++ Protocol Introduction
-          </h1>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Welcome to the comprehensive technical introduction to the RGB++ Protocol. Discover the revolutionary
-            technology that bridges Bitcoin&apos;s security with CKB&apos;s programmability through isomorphic binding.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Overview Section */}
-            <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 transform hover:scale-[1.02] animate-fade-in-up animation-delay-300">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-3 text-white">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg">
-                    <Book className="h-5 w-5 text-white" />
-                  </div>
-                  <span>Technology Overview</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="prose max-w-none text-gray-300">
-                <p className="leading-relaxed mb-6">
-                  RGB++ Protocol represents a paradigm shift in blockchain interoperability, establishing a
-                  revolutionary binding between Bitcoin UTXOs and Turing-complete CKB Scripts. This innovative approach
-                  leverages Bitcoin&apos;s unparalleled security while unlocking programmable capabilities previously
-                  impossible on the Bitcoin network.
-                </p>
-
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Zap className="h-5 w-5 mr-2 text-yellow-400" />
-                  Key Innovations
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
-                  {[
-                    "Single-use seal cryptographic commitments",
-                    "Isomorphic UTXO-Cell binding",
-                    "Cross-chain asset management",
-                    "SPV-based verification",
-                    "Turing-complete programmability",
-                  ].map((innovation, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 transform hover:scale-105"
-                    >
-                      <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse"></div>
-                      <span className="text-gray-200">{innovation}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Shield className="h-5 w-5 mr-2 text-green-400" />
-                  Technical Specifications
-                </h3>
-                <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 p-6 rounded-xl border border-white/10">
-                  <div className="grid md:grid-cols-2 gap-6 text-sm">
-                    <div className="space-y-3">
-                      {[
-                        { label: "Protocol Version", value: "RGB++ v1.0" },
-                        { label: "Supported Networks", value: "Bitcoin + CKB" },
-                        { label: "Security Model", value: "Bitcoin UTXO seals" },
-                        { label: "Programmability", value: "CKB Scripts (RISC-V)" },
-                      ].map((spec, index) => (
-                        <div key={index} className="flex justify-between items-center">
-                          <span className="text-gray-400">{spec.label}:</span>
-                          <span className="text-blue-300 font-mono">{spec.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="space-y-3">
-                      {[
-                        { label: "Verification", value: "SPV light client" },
-                        { label: "Asset Types", value: "xUDT tokens" },
-                        { label: "Cross-chain", value: "Bitcoin ↔ CKB" },
-                        { label: "Time Locks", value: "BTC_TIME_lock" },
-                      ].map((spec, index) => (
-                        <div key={index} className="flex justify-between items-center">
-                          <span className="text-gray-400">{spec.label}:</span>
-                          <span className="text-purple-300 font-mono">{spec.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Architecture Section */}
-            <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 transform hover:scale-[1.02] animate-fade-in-up animation-delay-400">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-3 text-white">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg">
-                    <Layers className="h-5 w-5 text-white" />
-                  </div>
-                  <span>System Architecture</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300 mb-6">
-                  The RGB++ architecture consists of four interconnected layers, each serving a specific purpose in the
-                  cross-chain ecosystem:
-                </p>
-
-                <div className="space-y-4">
-                  {[
-                    {
-                      title: "Bitcoin Layer",
-                      description: "UTXO management and single-use seals",
-                      color: "border-orange-500 bg-orange-500/10",
-                      icon: Bitcoin,
-                    },
-                    {
-                      title: "CKB Layer",
-                      description: "Programmable scripts and asset state management",
-                      color: "border-green-500 bg-green-500/10",
-                      icon: Network,
-                    },
-                    {
-                      title: "SPV Service",
-                      description: "Bitcoin light client verification on CKB",
-                      color: "border-blue-500 bg-blue-500/10",
-                      icon: Shield,
-                    },
-                    {
-                      title: "RGB++ Scripts",
-                      description: "RGBPP_lock and BTC_TIME_lock contracts",
-                      color: "border-purple-500 bg-purple-500/10",
-                      icon: Zap,
-                    },
-                  ].map((layer, index) => (
-                    <div
-                      key={index}
-                      className={`border-l-4 pl-6 py-4 rounded-r-lg ${layer.color} hover:scale-105 transition-all duration-300 group`}
-                    >
-                      <div className="flex items-center space-x-3 mb-2">
-                        <layer.icon className="h-5 w-5 text-white group-hover:scale-110 transition-transform duration-300" />
-                        <h4 className="font-semibold text-white">{layer.title}</h4>
-                      </div>
-                      <p className="text-gray-300 text-sm">{layer.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Sidebar */}
+    <DocLayout
+      title="Introduction"
+      description="Learn about RGB++ Protocol, the revolutionary technology that bridges Bitcoin's security with CKB's programmability through isomorphic binding."
+    >
+      <div className="space-y-12">
+        {/* What is RGB++? */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Bitcoin className="h-8 w-8 mr-3 text-orange-400" />
+            What is RGB++?
+          </h2>
           <div className="space-y-6">
-            {/* Table of Contents */}
-            <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 animate-fade-in-up animation-delay-500 sticky top-24">
+            <p className="text-gray-300 text-lg leading-relaxed">
+              The RGB++ Protocol is a simple protocol that enhances Bitcoin Layer 1 programmability by establishing
+              a binding between Bitcoin UTXOs and Turing-complete CKB Scripts. This binding creates a powerful bridge
+              between Bitcoin's security and CKB's programmability.
+            </p>
+
+            <p className="text-gray-300 text-lg leading-relaxed">
+              At its core, RGB++ Protocol uses a specific Bitcoin UTXO as a <strong className="text-white">single-use seal</strong> -
+              a cryptographic commitment that can only be used once, leveraging Bitcoin's inherent UTXO properties.
+              This UTXO, along with its corresponding CKB cells, serves as the cryptographic proof, or the commitment,
+              of ownership for RGB++ assets.
+            </p>
+
+            <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 p-6 rounded-xl border border-orange-500/20">
+              <div className="flex items-start space-x-4">
+                <Shield className="h-6 w-6 text-orange-400 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-orange-300 mb-2">Key Innovation</h4>
+                  <p className="text-orange-200 text-sm">
+                    When a single-use seal is consumed, the ownership of the RGB++ asset is guaranteed to be
+                    transferred to the new UTXO or the wallet controlling it, ensuring cryptographic security.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-gray-300 text-lg leading-relaxed">
+              The protocol employs CKB Cells to represent RGB++ asset ownership relationships, establishing an
+              isomorphic binding with Bitcoin UTXOs. In this architecture, CKB serves dual roles: as a public
+              database for assets and as an off-chain pre-settlement layer.
+            </p>
+
+            <p className="text-gray-300 text-lg leading-relaxed">
+              RGB++ Protocol bridges Bitcoin's security with CKB's programmability, enabling sophisticated
+              applications directly on Bitcoin. Developers can now create advanced smart contracts that power
+              decentralized applications, from IDO platforms to liquid staking pools, and more.
+            </p>
+          </div>
+        </section>
+
+        {/* Architecture Overview */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Layers className="h-8 w-8 mr-3 text-blue-400" />
+            Architecture Overview
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
               <CardHeader>
-                <CardTitle className="text-lg text-white">Table of Contents</CardTitle>
+                <CardTitle className="flex items-center text-white">
+                  <Bitcoin className="h-6 w-6 mr-2 text-orange-400" />
+                  Bitcoin Layer
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <nav className="space-y-3">
-                  {["Technology Overview", "System Architecture", "Performance Metrics", "Security Model"].map(
-                    (item, index) => (
-                      <a
-                        key={index}
-                        href={`#${item.toLowerCase().replace(" ", "-")}`}
-                        className="block text-blue-300 hover:text-blue-200 text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105 p-2 rounded-lg hover:bg-blue-500/10"
-                      >
-                        {item}
-                      </a>
-                    ),
-                  )}
-                </nav>
+                <ul className="space-y-2 text-gray-300">
+                  <li>• UTXO management and single-use seals</li>
+                  <li>• Cryptographic commitments via OP_RETURN</li>
+                  <li>• Asset ownership representation</li>
+                  <li>• Cross-chain transaction initiation</li>
+                </ul>
               </CardContent>
             </Card>
 
-            {/* Quick Links */}
-            <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 animate-fade-in-up animation-delay-600">
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
               <CardHeader>
-                <CardTitle className="text-lg text-white">Quick Links</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {[
-                  { href: "/concepts", icon: Book, label: "Core Concepts" },
-                  { href: "/source-code", icon: Network, label: "Source Code" },
-                  { href: "/quickstart", icon: Zap, label: "Quick Start" },
-                ].map((link, index) => (
-                  <Link key={index} href={link.href}>
-                    <Button
-                      variant="glass"
-                      effect="scale"
-                      className="w-full justify-start group"
-                    >
-                      <link.icon className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                      {link.label}
-                    </Button>
-                  </Link>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Next Steps */}
-            <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-xl border-blue-500/20 hover:border-blue-500/40 transition-all duration-500 animate-fade-in-up animation-delay-700">
-              <CardHeader>
-                <CardTitle className="text-lg text-white">Next Steps</CardTitle>
+                <CardTitle className="flex items-center text-white">
+                  <Network className="h-6 w-6 mr-2 text-green-400" />
+                  CKB Layer
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-300 text-sm mb-4">
-                  Ready to dive deeper? Continue with the core concepts to understand single-use seals and isomorphic
-                  binding.
-                </p>
-                <Button
-                  variant="gradient"
-                  effect="glow"
-                  className="w-full"
-                >
-                  Continue to Core Concepts
-                  <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
+                <ul className="space-y-2 text-gray-300">
+                  <li>• Programmable scripts and smart contracts</li>
+                  <li>• Asset state management and validation</li>
+                  <li>• Public database for RGB++ assets</li>
+                  <li>• Off-chain pre-settlement layer</li>
+                </ul>
               </CardContent>
             </Card>
           </div>
-        </div>
+        </section>
+
+        {/* Blockchain-Enhanced State Validation */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <CheckCircle className="h-8 w-8 mr-3 text-green-400" />
+            Blockchain-Enhanced State Validation
+          </h2>
+          <div className="space-y-6">
+            <p className="text-gray-300 text-lg leading-relaxed">
+              The concept of creating and managing assets on Bitcoin has been a long-standing pursuit in the
+              cryptocurrency space. While Bitcoin's UTXO model provides a robust foundation for value transfer,
+              its intentionally limited scripting system falls short in implementing the sophisticated security
+              validations required for complex asset management.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-white">
+                    <Database className="h-6 w-6 mr-2 text-blue-400" />
+                    Traditional RGB Approach
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• Client-side validation</li>
+                    <li>• Complex transaction history maintenance</li>
+                    <li>• Difficulty providing transaction proofs</li>
+                    <li>• Resource-intensive for simple clients</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-white">
+                    <Zap className="h-6 w-6 mr-2 text-green-400" />
+                    RGB++ Innovation
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• On-chain security checks via CKB</li>
+                    <li>• Straightforward verification process</li>
+                    <li>• System transparency maintained</li>
+                    <li>• Reduced burden on end users</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-6 rounded-xl border border-green-500/20">
+              <div className="flex items-start space-x-4">
+                <Shield className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-green-300 mb-2">Enhanced Security Model</h4>
+                  <p className="text-green-200 text-sm">
+                    RGB++ leverages CKB's Turing-complete script system to implement asset security checks.
+                    Users only need to verify relevant transactions on CKB to confirm the correctness of
+                    RGB++ transaction state calculations, significantly reducing complexity.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Typical Transaction Flow */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Workflow className="h-8 w-8 mr-3 text-purple-400" />
+            Typical Transaction Flow
+          </h2>
+          <div className="space-y-6">
+            <p className="text-gray-300 text-lg leading-relaxed">
+              Each RGB++ transaction generates a pair of corresponding transactions: one on Bitcoin and one on CKB.
+              This dual-chain approach ensures both security and programmability.
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  step: "1",
+                  title: "Off-chain Pre-computation",
+                  description: "Calculate commitment using CKB transaction, Bitcoin UTXOs, and placeholder values",
+                  icon: Database,
+                  color: "text-blue-400"
+                },
+                {
+                  step: "2",
+                  title: "Bitcoin Transaction",
+                  description: "Submit Bitcoin transaction with OP_RETURN commitment and create new UTXO",
+                  icon: Bitcoin,
+                  color: "text-orange-400"
+                },
+                {
+                  step: "3",
+                  title: "CKB Transaction",
+                  description: "Submit CKB transaction with RGB++ asset state recorded in output data",
+                  icon: Network,
+                  color: "text-green-400"
+                },
+                {
+                  step: "4",
+                  title: "On-chain Verification",
+                  description: "Validate UTXO spending, Bitcoin transaction existence, and state transitions",
+                  icon: CheckCircle,
+                  color: "text-purple-400"
+                }
+              ].map((step, index) => (
+                <Card key={index} className="bg-white/5 backdrop-blur-xl border-white/10">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge variant="outline" className="text-xs">Step {step.step}</Badge>
+                      <step.icon className={`h-5 w-5 ${step.color}`} />
+                    </div>
+                    <CardTitle className="text-white text-sm">{step.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-300 text-xs leading-relaxed">{step.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+              <div className="flex items-start space-x-4">
+                <Lock className="h-6 w-6 text-purple-400 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-purple-300 mb-2">Isomorphic Binding</h4>
+                  <p className="text-purple-200 text-sm">
+                    The commitment formula: <code className="bg-black/20 px-2 py-1 rounded text-xs">commitment = hash(CKB_TX_B | btc_utxo#1 | btc_utxo#2)</code>
+                    <br />This establishes a secure binding between Bitcoin UTXOs and CKB cells through RGB++ Script arguments.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Key Features */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Zap className="h-8 w-8 mr-3 text-yellow-400" />
+            Key Features
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Shield,
+                title: "Single-Use Seals",
+                description: "Bitcoin UTXOs serve as cryptographic commitments that can only be used once, ensuring asset uniqueness and preventing double-spending.",
+                color: "text-blue-400"
+              },
+              {
+                icon: Network,
+                title: "Isomorphic Binding",
+                description: "One-to-one mapping mechanism linking Bitcoin UTXOs to CKB Cells, enabling ownership synchronization.",
+                color: "text-green-400"
+              },
+              {
+                icon: Code,
+                title: "Turing-Complete Scripts",
+                description: "Leverage CKB's RISC-V based virtual machine for sophisticated smart contract logic.",
+                color: "text-purple-400"
+              },
+              {
+                icon: Layers,
+                title: "Cross-Chain Assets",
+                description: "Seamless asset transfers and state management between Bitcoin and CKB networks.",
+                color: "text-orange-400"
+              },
+              {
+                icon: Shield,
+                title: "SPV Verification",
+                description: "Bitcoin light client implementation on CKB enables secure transaction verification.",
+                color: "text-red-400"
+              },
+              {
+                icon: Zap,
+                title: "Enhanced Validation",
+                description: "Blockchain-enhanced state validation that maintains privacy while ensuring security.",
+                color: "text-cyan-400"
+              }
+            ].map((feature, index) => (
+              <Card key={index} className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-300">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-white">
+                    <feature.icon className={`h-6 w-6 mr-2 ${feature.color}`} />
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300 text-sm">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Why RGB++? */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6">Why RGB++?</h2>
+          <div className="space-y-6">
+            <p className="text-gray-300 text-lg leading-relaxed">
+              RGB++ Protocol addresses the fundamental limitations of Bitcoin's scripting system while maintaining
+              its security guarantees. By leveraging CKB's programmability, RGB++ enables sophisticated applications
+              that were previously impossible on Bitcoin.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-white">Advantages over Traditional Approaches</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Decentralized Authentication without centralized entities</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Robust P2P Network infrastructure</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Mature Virtual Machines and Contract Languages</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Efficient Shared States and Hosted Contracts</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-white">Technical Innovation</h3>
+                <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-4 rounded-lg border border-blue-500/20">
+                  <p className="text-blue-200 text-sm leading-relaxed">
+                    RGB++ takes a different approach by leveraging CKB's Turing-complete script system to implement
+                    asset security checks. This design offers a more straightforward and accessible verification
+                    process for all users while maintaining system transparency.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Next Steps */}
+        <section className="bg-gradient-to-r from-orange-500/10 to-red-500/10 p-8 rounded-xl border border-orange-500/20">
+          <h3 className="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
+          <p className="text-gray-300 mb-6">
+            Now that you understand what RGB++ is and how it works, explore the ecosystem and start building with Bitcoin's programmable layer.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/quickstart">
+              <Button className="bg-orange-500 hover:bg-orange-600">
+                <Zap className="mr-2 h-4 w-4" />
+                Quick Start Guide
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/concepts">
+              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-white/10">
+                <Book className="mr-2 h-4 w-4" />
+                Core Concepts
+              </Button>
+            </Link>
+            <Link href="/source-code">
+              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-white/10">
+                <Code className="mr-2 h-4 w-4" />
+                Resources & Code
+              </Button>
+            </Link>
+          </div>
+        </section>
       </div>
-    </div>
+    </DocLayout>
   )
 }

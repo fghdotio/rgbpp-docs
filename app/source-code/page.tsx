@@ -1,513 +1,629 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+"use client"
+
+import { DocLayout } from "@/components/doc-layout"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Code, Download, Github, Copy, Terminal, FileCode, Cpu } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Book, Bitcoin, Network, Shield, Zap, Layers, ExternalLink, Code, ArrowRight, Server, Database, Lock, Globe, FileText, GitBranch, Workflow, CheckCircle, Terminal, Package } from "lucide-react"
 import Link from "next/link"
 
 export default function SourceCodePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-green-900 to-slate-900 relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -inset-10 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-        </div>
-      </div>
+    <DocLayout
+      title="Resources"
+      description="Comprehensive resources, documentation, and development tools for RGB++ Protocol."
+    >
+      <div className="space-y-16">
+        {/* Quick Links */}
+        <section>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 cursor-pointer group">
+              <CardContent className="p-6 text-center">
+                <FileText className="h-8 w-8 mx-auto mb-3 text-blue-400 group-hover:scale-110 transition-transform" />
+                <h3 className="font-semibold text-white mb-1">Light Paper</h3>
+                <p className="text-xs text-gray-400">Protocol Overview</p>
+              </CardContent>
+            </Card>
 
-      {/* Floating code symbols */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {["<", ">", "{", "}", "(", ")", ";", "="].map((symbol, i) => (
-          <div
-            key={i}
-            className="absolute text-white/20 text-2xl font-mono animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          >
-            {symbol}
-          </div>
-        ))}
-      </div>
+            <Card className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
+              <CardContent className="p-6 text-center">
+                <Code className="h-8 w-8 mx-auto mb-3 text-green-400 group-hover:scale-110 transition-transform" />
+                <h3 className="font-semibold text-white mb-1">RGB++ SDK</h3>
+                <p className="text-xs text-gray-400">Development Kit</p>
+              </CardContent>
+            </Card>
 
-      {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <Code className="h-8 w-8 text-green-400 group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 h-8 w-8 text-green-400 animate-ping opacity-20">
-                  <Code className="h-8 w-8" />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                  Source Code
-                </h1>
-                <p className="text-xs text-gray-400">RGB++ Implementation</p>
-              </div>
-            </Link>
-            <div className="flex items-center space-x-4">
-              <Button
-                variant="glass"
-                size="sm"
-                effect="scale"
-              >
-                <Github className="h-4 w-4 mr-2" />
-                GitHub
-              </Button>
-              <Button
-                variant="glass"
-                size="sm"
-                effect="scale"
-              >
-                <Download className="h-4 w-4 mr-2" />
-                Download
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+            <Card className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 cursor-pointer group">
+              <CardContent className="p-6 text-center">
+                <Globe className="h-8 w-8 mx-auto mb-3 text-purple-400 group-hover:scale-110 transition-transform" />
+                <h3 className="font-semibold text-white mb-1">Explorer</h3>
+                <p className="text-xs text-gray-400">Block Explorer</p>
+              </CardContent>
+            </Card>
 
-      <div className="container mx-auto px-4 py-8 relative z-10">
-        {/* Breadcrumb */}
-        <div className="flex items-center space-x-2 text-sm text-gray-400 mb-8 animate-fade-in-up">
-          <Link href="/" className="hover:text-green-400 transition-colors duration-300">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-white">Source Code</span>
-        </div>
-
-        {/* Page Header */}
-        <div className="mb-16 text-center animate-fade-in-up animation-delay-200">
-          <Badge className="mb-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-300 border-green-500/30 hover:scale-105 transition-transform duration-300">
-            <Terminal className="w-4 h-4 mr-2" />
-            Implementation
-          </Badge>
-          <h1 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white via-green-200 to-emerald-200 bg-clip-text text-transparent">
-            RGB++ Source Code Repository
-          </h1>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Explore the complete RGB++ Protocol implementation with detailed code explanations, smart contracts, and SDK
-            examples for Bitcoin-CKB asset management.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-4 gap-8">
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <Card className="sticky top-24 bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 animate-fade-in-up animation-delay-300">
-              <CardHeader>
-                <CardTitle className="text-lg text-white flex items-center">
-                  <FileCode className="h-5 w-5 mr-2 text-green-400" />
-                  Code Structure
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <nav className="space-y-3 text-sm">
-                  <div className="font-semibold text-green-300">Core Modules</div>
-                  {["rgbpp-lock.rs", "btc-time-lock.rs", "spv-client.rs"].map((file, index) => (
-                    <a
-                      key={index}
-                      href={`#${file}`}
-                      className="block text-green-200 hover:text-green-100 pl-2 transition-all duration-300 hover:translate-x-2 hover:scale-105 p-2 rounded-lg hover:bg-green-500/10"
-                    >
-                      {file}
-                    </a>
-                  ))}
-
-                  <div className="font-semibold text-blue-300 mt-4">SDK Components</div>
-                  {["rgbpp-sdk", "ccc integration", "btc-assets-api"].map((component, index) => (
-                    <a
-                      key={index}
-                      href={`#${component}`}
-                      className="block text-blue-200 hover:text-blue-100 pl-2 transition-all duration-300 hover:translate-x-2 hover:scale-105 p-2 rounded-lg hover:bg-blue-500/10"
-                    >
-                      {component}
-                    </a>
-                  ))}
-
-                  <div className="font-semibold text-purple-300 mt-4">Examples</div>
-                  {["udt-issuance.ts", "udt-transfer.ts", "leap-to-ckb.ts"].map((example, index) => (
-                    <a
-                      key={index}
-                      href={`#${example}`}
-                      className="block text-purple-200 hover:text-purple-100 pl-2 transition-all duration-300 hover:translate-x-2 hover:scale-105 p-2 rounded-lg hover:bg-purple-500/10"
-                    >
-                      {example}
-                    </a>
-                  ))}
-                </nav>
+            <Card className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 cursor-pointer group">
+              <CardContent className="p-6 text-center">
+                <GitBranch className="h-8 w-8 mx-auto mb-3 text-orange-400 group-hover:scale-110 transition-transform" />
+                <h3 className="font-semibold text-white mb-1">GitHub</h3>
+                <p className="text-xs text-gray-400">Source Code</p>
               </CardContent>
             </Card>
           </div>
+        </section>
 
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            <div className="animate-fade-in-up animation-delay-400">
-              <Tabs defaultValue="core" className="space-y-6">
-                <TabsList className="grid w-full grid-cols-4 bg-white/5 backdrop-blur-xl border border-white/10 p-1 rounded-xl">
-                  <TabsTrigger
-                    value="core"
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-600 data-[state=active]:to-emerald-600 data-[state=active]:text-white transition-all duration-300"
-                  >
-                    Core Modules
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="protocols"
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-cyan-600 data-[state=active]:text-white transition-all duration-300"
-                  >
-                    Protocols
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="examples"
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:text-white transition-all duration-300"
-                  >
-                    Examples
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="tests"
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-600 data-[state=active]:to-red-600 data-[state=active]:text-white transition-all duration-300"
-                  >
-                    Tests
-                  </TabsTrigger>
-                </TabsList>
+        {/* Protocol Overview */}
+        <section>
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white mb-3">Protocol Overview</h2>
+            <p className="text-gray-400">Essential documentation and resources for understanding RGB++ Protocol</p>
+          </div>
 
-                <TabsContent value="core" className="space-y-6">
-                  {/* Network Core */}
-                  <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-green-500/40 transition-all duration-500 transform hover:scale-[1.01] group">
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-300">
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center text-white text-lg">
+                  <FileText className="h-6 w-6 mr-3 text-blue-400" />
+                  RGB++ Protocol Light Paper
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">English Version</span>
+                  <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-white/10" asChild>
+                    <a href="https://talk.nervos.org/t/rgb-protocol-light-paper-translation/7790" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-3 w-3 mr-1" />
+                      Read
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">中文版本</span>
+                  <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-white/10" asChild>
+                    <a href="https://talk.nervos.org/t/rgb-protocol-light-paper/7733" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-3 w-3 mr-1" />
+                      阅读
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-300">
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center text-white text-lg">
+                  <Server className="h-6 w-6 mr-3 text-purple-400" />
+                  Infrastructure
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <div>
+                    <div className="text-gray-300 font-medium">RGB++ Explorer</div>
+                    <div className="text-xs text-gray-500">Block explorer for RGB++ transactions and assets</div>
+                  </div>
+                  <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-white/10" asChild>
+                    <a href="https://explorer.rgbpp.io/" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-3 w-3 mr-1" />
+                      Visit
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <div>
+                    <div className="text-gray-300 font-medium">btc-assets-api</div>
+                    <div className="text-xs text-gray-500">API service for BTC/RGB++ asset management</div>
+                  </div>
+                  <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-white/10" asChild>
+                    <a href="https://github.com/RGBPlusPlus/btc-assets-api" target="_blank" rel="noopener noreferrer">
+                      <GitBranch className="h-3 w-3 mr-1" />
+                      GitHub
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Core Components */}
+        <section>
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white mb-3">Core Components</h2>
+            <p className="text-gray-400">Essential building blocks of the RGB++ Protocol</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white text-lg">
+                  <Shield className="h-6 w-6 mr-3 text-orange-400" />
+                  RGB++ Script Standard
+                </CardTitle>
+                <p className="text-gray-400 text-sm mt-2">
+                  Core contracts implementing the RGB++ Protocol
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">RGB++ Script Standard (English)</span>
+                  <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                    <a href="https://github.com/RGBPlusPlus/RGBPlusPlus-design/blob/main/docs/lockscript-design-prd-en.md" target="_blank" rel="noopener noreferrer">
+                      <FileText className="h-3 w-3 mr-1" />
+                      Docs
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">RGB++ Script Standard (中文)</span>
+                  <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                    <a href="https://github.com/RGBPlusPlus/RGBPlusPlus-design/blob/main/docs/lockscript-design-prd-cn.md" target="_blank" rel="noopener noreferrer">
+                      <FileText className="h-3 w-3 mr-1" />
+                      文档
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">RGB++ Script Repository</span>
+                  <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                    <a href="https://github.com/RGBPlusPlus/rgbpp" target="_blank" rel="noopener noreferrer">
+                      <GitBranch className="h-3 w-3 mr-1" />
+                      Code
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white text-lg">
+                  <Network className="h-6 w-6 mr-3 text-blue-400" />
+                  CKB Bitcoin SPV
+                </CardTitle>
+                <p className="text-gray-400 text-sm mt-2">
+                  Light client implementation for Bitcoin-CKB bridge
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">CKB Bitcoin SPV Design</span>
+                  <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                    <a href="https://github.com/RGBPlusPlus/ckb-bitcoin-spv/blob/master/docs/Design.md" target="_blank" rel="noopener noreferrer">
+                      <FileText className="h-3 w-3 mr-1" />
+                      Design
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">CKB Bitcoin SPV Contracts</span>
+                  <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                    <a href="https://github.com/RGBPlusPlus/ckb-bitcoin-spv-contracts" target="_blank" rel="noopener noreferrer">
+                      <GitBranch className="h-3 w-3 mr-1" />
+                      Code
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">CKB Bitcoin SPV Library</span>
+                  <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                    <a href="https://github.com/RGBPlusPlus/ckb-bitcoin-spv" target="_blank" rel="noopener noreferrer">
+                      <GitBranch className="h-3 w-3 mr-1" />
+                      Code
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                  <span className="text-gray-300">CKB Bitcoin SPV Service</span>
+                  <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                    <a href="https://github.com/RGBPlusPlus/ckb-bitcoin-spv-service" target="_blank" rel="noopener noreferrer">
+                      <GitBranch className="h-3 w-3 mr-1" />
+                      Code
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Development Tools */}
+        <section>
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white mb-3">Development Tools</h2>
+            <p className="text-gray-400">SDKs and tools for building RGB++ applications</p>
+          </div>
+
+          <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+            <CardHeader>
+              <CardTitle className="flex items-center text-white text-lg">
+                <Code className="h-6 w-6 mr-3 text-green-400" />
+                RGB++ SDK
+              </CardTitle>
+              <p className="text-gray-400 text-sm mt-2">
+                TypeScript/JavaScript SDK for building RGB++ applications
+              </p>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                <div className="flex items-center">
+                  <span className="text-gray-300">RGB++ SDK (Primary SDK)</span>
+                  <Badge variant="outline" className="text-xs ml-2 border-green-500/30 text-green-400">Recommended</Badge>
+                </div>
+                <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                  <a href="https://github.com/ckb-devrel/ccc/tree/rgbpp-sdk" target="_blank" rel="noopener noreferrer">
+                    <GitBranch className="h-3 w-3 mr-1" />
+                    TypeScript
+                  </a>
+                </Button>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                <span className="text-gray-300">RGB++ SDK (Legacy SDK)</span>
+                <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                  <a href="https://github.com/RGBPlusPlus/rgbpp-sdk" target="_blank" rel="noopener noreferrer">
+                    <GitBranch className="h-3 w-3 mr-1" />
+                    TypeScript
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Community Resources */}
+        <section>
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white mb-3">Community Resources</h2>
+            <p className="text-gray-400">Community-contributed articles and educational content</p>
+          </div>
+
+          <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+            <CardHeader>
+              <CardTitle className="flex items-center text-white text-lg">
+                <Book className="h-6 w-6 mr-3 text-pink-400" />
+                Community Articles
+              </CardTitle>
+              <p className="text-gray-400 text-sm mt-2">
+                Community-contributed articles and resources
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between p-3 bg-black/20 rounded-lg hover:bg-black/30 transition-colors">
+                <div>
+                  <div className="text-gray-300 text-sm">从 RGB 到 RGB++</div>
+                  <div className="text-xs text-gray-500">CKB如何赋能比特币生态资产协议</div>
+                </div>
+                <Button size="sm" variant="cyber" effect="shimmer" asChild>
+                  <a href="https://talk.nervos.org/t/rgb-rgb-ckb/7791/1" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="h-3 w-3 mr-1" />
+                    阅读
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Deployment */}
+        <section>
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white mb-3">Deployment</h2>
+            <p className="text-gray-400">Contract deployments and API endpoints across different networks</p>
+          </div>
+
+          <div className="space-y-8">
+            {/* Mainnet Deployment */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
+                Mirana Mainnet
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-white">
+                      <Shield className="h-5 w-5 mr-2 text-orange-400" />
+                      RGB++ Script
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 text-xs font-mono">
+                    <div className="grid grid-cols-3 gap-2 text-gray-400">
+                      <span>Parameter</span>
+                      <span className="col-span-2">Value</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">code_hash</span>
+                      <span className="col-span-2 text-gray-300 break-all">0xbc6c568a1a0d0a09f6844dc9d74ddb4343c32143ff25f727c59edf4fb72d6936</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">hash_type</span>
+                      <span className="col-span-2 text-gray-300">type</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">tx_hash</span>
+                      <span className="col-span-2 text-gray-300 break-all">0x04c5c3e69f1aa6ee27fb9de3d15a81704e387ab3b453965adbe0b6ca343c6f41</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">index</span>
+                      <span className="col-span-2 text-gray-300">0x0</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">dep_type</span>
+                      <span className="col-span-2 text-gray-300">code</span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-white">
+                      <Lock className="h-5 w-5 mr-2 text-blue-400" />
+                      BTC_TIME_lock Script
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 text-xs font-mono">
+                    <div className="grid grid-cols-3 gap-2 text-gray-400">
+                      <span>Parameter</span>
+                      <span className="col-span-2">Value</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">code_hash</span>
+                      <span className="col-span-2 text-gray-300 break-all">0x70d64497a075bd651e98ac030455ea200637ee325a12ad08aff03f1a117e5a62</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">hash_type</span>
+                      <span className="col-span-2 text-gray-300">type</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">tx_hash</span>
+                      <span className="col-span-2 text-gray-300 break-all">0x6257bf4297ee75fcebe2654d8c5f8d93bc9fc1b3dc62b8cef54ffe166162e996</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">index</span>
+                      <span className="col-span-2 text-gray-300">0x0</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="text-gray-400">dep_type</span>
+                      <span className="col-span-2 text-gray-300">code</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Testnet Deployments */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                <Code className="h-5 w-5 mr-2 text-yellow-400" />
+                Meepo Testnet
+              </h3>
+
+              {/* Bitcoin Testnet3 */}
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-300 mb-4 flex items-center">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full mr-2"></div>
+                  Bitcoin Testnet3
+                </h4>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <Card className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20">
                     <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <CardTitle className="flex items-center space-x-3 text-white">
-                            <div className="p-2 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <Code className="h-5 w-5 text-white" />
-                            </div>
-                            <span>rgbpp-lock.rs</span>
-                          </CardTitle>
-                          <CardDescription className="text-gray-300">
-                            RGBPP lock script implementation with commitment verification
-                          </CardDescription>
-                        </div>
-                        <Button
-                          variant="glass"
-                          size="sm"
-                          effect="scale"
-                        >
-                          <Copy className="h-4 w-4 mr-2" />
-                          Copy
-                        </Button>
-                      </div>
+                      <CardTitle className="flex items-center text-white">
+                        <Shield className="h-5 w-5 mr-2 text-orange-400" />
+                        RGB++ Script
+                      </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="bg-gray-900/80 backdrop-blur-sm text-gray-100 p-6 rounded-xl overflow-x-auto border border-green-500/20 hover:border-green-500/40 transition-all duration-300">
-                        <pre className="text-sm">
-                          {`// RGBPP lock script
-// Verifies commitments and SPV proofs for Bitcoin-CKB asset transfers
-
-use ckb_std::{
-    ckb_constants::Source,
-    high_level::{load_script_hash, load_witness_args, QueryIter},
-    syscalls::validate_witness_lock,
-    {
-        bytes::Bytes,
-        error::SysError,
-        script::ScriptError,
-        since::Since,
-        EnvError,
-    },
-};
-
-// Define error codes
-enum Error {
-    Encoding = 1,
-    InvalidArgument,
-    WitnessError,
-    InvalidCommitment,
-    SPVVerificationFailed,
-    TimeLockNotReached,
-}
-
-// Main entry point
-fn main() -> Result<(), Error> {
-    // Load script hash
-    let script_hash = load_script_hash()?;
-
-    // Load witness arguments
-    let witness_args = load_witness_args()?;
-
-    // Verify commitment
-    verify_commitment()?;
-
-    // Validate SPV proof
-    validate_spv_proof()?;
-
-    // Check time lock
-    check_time_lock()?;
-
-    Ok(())
-}
-
-fn verify_commitment() -> Result<(), Error> {
-    // Implementation for verifying the commitment
-    // This involves checking if the output cell's data matches the expected commitment
-    Ok(())
-}
-
-fn validate_spv_proof() -> Result<(), Error> {
-    // Implementation for validating the SPV proof
-    // This involves verifying the Bitcoin transaction against the Bitcoin block header
-    Ok(())
-}
-
-fn check_time_lock() -> Result<(), Error> {
-    // Implementation for checking the time lock
-    // This involves checking if the current block number is greater than the lock time
-    Ok(())
-}`}
-                        </pre>
+                    <CardContent className="space-y-2 text-xs font-mono">
+                      <div className="grid grid-cols-3 gap-2 text-gray-400">
+                        <span>Parameter</span>
+                        <span className="col-span-2">Value</span>
                       </div>
-                      <div className="mt-6 p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-lg border border-green-500/20">
-                        <h4 className="font-semibold text-green-300 mb-2 flex items-center">
-                          <Cpu className="h-4 w-4 mr-2" />
-                          Code Explanation
-                        </h4>
-                        <p className="text-green-200 text-sm leading-relaxed">
-                          The RGBPP lock script ensures secure asset transfer between Bitcoin and CKB. It verifies
-                          commitments, validates SPV proofs, and enforces time locks for secure and trustless
-                          cross-chain operations.
-                        </p>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">code_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0x61ca7a4796a4eb19ca4f0d065cb9b10ddcf002f10f7cbb810c706cb6bb5c3248</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">hash_type</span>
+                        <span className="col-span-2 text-gray-300">type</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">tx_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0xf1de59e973b85791ec32debbba08dff80c63197e895eb95d67fc1e9f6b413e00</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">index</span>
+                        <span className="col-span-2 text-gray-300">0x0</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">dep_type</span>
+                        <span className="col-span-2 text-gray-300">code</span>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Protocol Handler */}
-                  <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-[1.01] group">
+                  <Card className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20">
                     <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <CardTitle className="flex items-center space-x-3 text-white">
-                            <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <Code className="h-5 w-5 text-white" />
-                            </div>
-                            <span>btc-time-lock.rs</span>
-                          </CardTitle>
-                          <CardDescription className="text-gray-300">
-                            Bitcoin time lock contract for conditional asset release
-                          </CardDescription>
-                        </div>
-                        <Button
-                          variant="glass"
-                          size="sm"
-                          effect="scale"
-                        >
-                          <Copy className="h-4 w-4 mr-2" />
-                          Copy
-                        </Button>
-                      </div>
+                      <CardTitle className="flex items-center text-white">
+                        <Lock className="h-5 w-5 mr-2 text-blue-400" />
+                        BTC_TIME_lock Script
+                      </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="bg-gray-900/80 backdrop-blur-sm text-gray-100 p-6 rounded-xl overflow-x-auto border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-                        <pre className="text-sm">
-                          {`// Bitcoin Time Lock Contract
-// Implements a time lock mechanism for releasing assets after a specific time
-
-use ckb_std::{
-    ckb_constants::Source,
-    high_level::{load_script_hash, load_witness_args, QueryIter},
-    syscalls::validate_witness_lock,
-    {
-        bytes::Bytes,
-        error::SysError,
-        script::ScriptError,
-        since::Since,
-        EnvError,
-    },
-};
-
-// Define error codes
-enum Error {
-    Encoding = 1,
-    InvalidArgument,
-    WitnessError,
-    TimeLockNotReached,
-}
-
-// Main entry point
-fn main() -> Result<(), Error> {
-    // Load script hash
-    let script_hash = load_script_hash()?;
-
-    // Load witness arguments
-    let witness_args = load_witness_args()?;
-
-    // Check time lock
-    check_time_lock()?;
-
-    Ok(())
-}
-
-fn check_time_lock() -> Result<(), Error> {
-    // Implementation for checking the time lock
-    // This involves checking if the current block number is greater than the lock time
-    Ok(())
-}`}
-                        </pre>
+                    <CardContent className="space-y-2 text-xs font-mono">
+                      <div className="grid grid-cols-3 gap-2 text-gray-400">
+                        <span>Parameter</span>
+                        <span className="col-span-2">Value</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">code_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0x00cdf8fab0f8ac638758ebf5ea5e4052b1d71e8a77b9f43139718621f6849326</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">hash_type</span>
+                        <span className="col-span-2 text-gray-300">type</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">tx_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0xde0f87878a97500f549418e5d46d2f7704c565a262aa17036c9c1c13ad638529</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">index</span>
+                        <span className="col-span-2 text-gray-300">0x0</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">dep_type</span>
+                        <span className="col-span-2 text-gray-300">code</span>
                       </div>
                     </CardContent>
                   </Card>
-                </TabsContent>
+                </div>
+              </div>
 
-                <TabsContent value="protocols" className="space-y-6">
-                  <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 transform hover:scale-[1.01]">
+              {/* Bitcoin Signet */}
+              <div>
+                <h4 className="text-lg font-semibold text-gray-300 mb-4 flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-2"></div>
+                  Bitcoin Signet
+                </h4>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <Card className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20">
                     <CardHeader>
-                      <CardTitle className="text-white">Protocol Implementations</CardTitle>
-                      <CardDescription className="text-gray-300">
-                        Detailed implementation of various network protocols
-                      </CardDescription>
+                      <CardTitle className="flex items-center text-white">
+                        <Shield className="h-5 w-5 mr-2 text-orange-400" />
+                        RGB++ Script
+                      </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        {[
-                          {
-                            title: "TCP Protocol",
-                            description: "Reliable, connection-oriented protocol implementation",
-                            gradient: "from-blue-500 to-cyan-500",
-                          },
-                          {
-                            title: "UDP Protocol",
-                            description: "Fast, connectionless protocol for real-time applications",
-                            gradient: "from-green-500 to-emerald-500",
-                          },
-                          {
-                            title: "Custom Protocol",
-                            description: "Optimized protocol for specific network requirements",
-                            gradient: "from-purple-500 to-pink-500",
-                          },
-                          {
-                            title: "Security Layer",
-                            description: "Encryption and authentication protocol implementation",
-                            gradient: "from-orange-500 to-red-500",
-                          },
-                        ].map((protocol, index) => (
-                          <div
-                            key={index}
-                            className={`p-4 border rounded-lg bg-gradient-to-r ${protocol.gradient}/10 border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105`}
-                          >
-                            <h4 className="font-semibold mb-2 text-white">{protocol.title}</h4>
-                            <p className="text-sm text-gray-300 mb-3">{protocol.description}</p>
-                            <Button
-                              variant="glass"
-                              size="sm"
-                              effect="scale"
-                            >
-                              View Code
-                            </Button>
-                          </div>
-                        ))}
+                    <CardContent className="space-y-2 text-xs font-mono">
+                      <div className="grid grid-cols-3 gap-2 text-gray-400">
+                        <span>Parameter</span>
+                        <span className="col-span-2">Value</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">code_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0xd07598deec7ce7b5665310386b4abd06a6d48843e953c5cc2112ad0d5a220364</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">hash_type</span>
+                        <span className="col-span-2 text-gray-300">type</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">tx_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0x61efdeddbaa0bb4132c0eb174b3e8002ff5ec430f61ba46f30768d683c516eec</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">index</span>
+                        <span className="col-span-2 text-gray-300">0x0</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">dep_type</span>
+                        <span className="col-span-2 text-gray-300">code</span>
                       </div>
                     </CardContent>
                   </Card>
-                </TabsContent>
 
-                <TabsContent value="examples" className="space-y-6">
-                  <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 transform hover:scale-[1.01]">
+                  <Card className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20">
                     <CardHeader>
-                      <CardTitle className="text-white">Usage Examples</CardTitle>
-                      <CardDescription className="text-gray-300">
-                        Practical examples showing how to use the RGB++ Protocol
-                      </CardDescription>
+                      <CardTitle className="flex items-center text-white">
+                        <Lock className="h-5 w-5 mr-2 text-blue-400" />
+                        BTC_TIME_lock Script
+                      </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        {[
-                          {
-                            title: "UDT Issuance Transaction",
-                            description: "Example of issuing a new UDT asset on CKB using RGB++",
-                            gradient: "from-blue-500 to-cyan-500",
-                          },
-                          {
-                            title: "Bitcoin-CKB Transaction Binding",
-                            description: "Demonstrates how to bind a Bitcoin transaction to a CKB transaction",
-                            gradient: "from-green-500 to-emerald-500",
-                          },
-                          {
-                            title: "Leap to CKB",
-                            description: "Example of moving assets from Bitcoin to CKB using RGB++",
-                            gradient: "from-purple-500 to-pink-500",
-                          },
-                        ].map((example, index) => (
-                          <div
-                            key={index}
-                            className={`p-4 border-l-4 bg-gradient-to-r ${example.gradient}/10 rounded-r-lg hover:scale-105 transition-all duration-300`}
-                            style={{
-                              borderLeftColor: `rgb(${example.gradient.includes("blue") ? "59 130 246" : example.gradient.includes("green") ? "34 197 94" : "168 85 247"})`,
-                            }}
-                          >
-                            <h4 className="font-semibold text-white">{example.title}</h4>
-                            <p className="text-gray-300 text-sm mt-1">{example.description}</p>
-                          </div>
-                        ))}
+                    <CardContent className="space-y-2 text-xs font-mono">
+                      <div className="grid grid-cols-3 gap-2 text-gray-400">
+                        <span>Parameter</span>
+                        <span className="col-span-2">Value</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">code_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0x80a09eca26d77cea1f5a69471c59481be7404febf40ee90f886c36a948385b55</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">hash_type</span>
+                        <span className="col-span-2 text-gray-300">type</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">tx_hash</span>
+                        <span className="col-span-2 text-gray-300 break-all">0x5364b3535965e9eac9a35dd7af8e9e45a61d30a16e115923c032f80b28783e21</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">index</span>
+                        <span className="col-span-2 text-gray-300">0x0</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <span className="text-gray-400">dep_type</span>
+                        <span className="col-span-2 text-gray-300">code</span>
                       </div>
                     </CardContent>
                   </Card>
-                </TabsContent>
+                </div>
+              </div>
+            </div>
 
-                <TabsContent value="tests" className="space-y-6">
-                  <Card className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-500 transform hover:scale-[1.01]">
-                    <CardHeader>
-                      <CardTitle className="text-white">Test Suite</CardTitle>
-                      <CardDescription className="text-gray-300">
-                        Comprehensive testing framework and test cases
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4">
-                        {[
-                          {
-                            value: "98%",
-                            label: "Code Coverage",
-                            gradient: "from-green-500 to-emerald-500",
-                          },
-                          {
-                            value: "1,247",
-                            label: "Unit Tests",
-                            gradient: "from-blue-500 to-cyan-500",
-                          },
-                          {
-                            value: "156",
-                            label: "Integration Tests",
-                            gradient: "from-purple-500 to-pink-500",
-                          },
-                        ].map((stat, index) => (
-                          <div
-                            key={index}
-                            className={`text-center p-6 bg-gradient-to-r ${stat.gradient}/10 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105`}
-                          >
-                            <div
-                              className={`text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}
-                            >
-                              {stat.value}
-                            </div>
-                            <div className="text-sm text-gray-300 mt-2">{stat.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-              </Tabs>
+            {/* API Endpoints */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                <Database className="h-5 w-5 mr-2 text-purple-400" />
+                btc-assets-api
+              </h3>
+              <Card className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-purple-500/20">
+                <CardContent className="p-6">
+                  <p className="text-purple-200 text-sm mb-4">
+                    RGB++ provides dedicated API endpoints for different network environments:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                    <div className="space-y-2">
+                      <div className="text-purple-200 text-sm font-medium">Testnet</div>
+                      <code className="bg-black/30 px-3 py-2 rounded text-xs text-purple-100 block">
+                        https://api.testnet.rgbpp.io
+                      </code>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-purple-200 text-sm font-medium">Signet</div>
+                      <code className="bg-black/30 px-3 py-2 rounded text-xs text-purple-100 block">
+                        https://api.signet.rgbpp.io
+                      </code>
+                    </div>
+                  </div>
+                  <p className="text-purple-200 text-xs">
+                    <strong>Mainnet:</strong> For production applications, access instructions are available in the{" "}
+                    <a href="https://github.com/RGBPlusPlus/btc-assets-api?tab=readme-ov-file#mainnet" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-purple-100 underline">
+                      btc-assets-api repository
+                    </a>.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-8 rounded-xl border border-purple-500/20">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">Start Building with RGB++</h3>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Ready to dive into RGB++ development? Start with our quick start guide or explore the core concepts to understand the protocol better.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/quickstart">
+                <Button variant="gradient" effect="scale" className="shadow-lg shadow-purple-500/30">
+                  <Zap className="mr-2 h-4 w-4" />
+                  Quick Start Guide
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/concepts">
+                <Button variant="cyber" effect="scale">
+                  <Book className="mr-2 h-4 w-4" />
+                  Core Concepts
+                </Button>
+              </Link>
+              <Link href="/introduction">
+                <Button variant="glass" effect="scale">
+                  <Bitcoin className="mr-2 h-4 w-4" />
+                  Introduction
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </DocLayout>
   )
 }

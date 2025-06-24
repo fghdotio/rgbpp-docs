@@ -1,759 +1,419 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+"use client"
+
+import { DocLayout } from "@/components/doc-layout"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowLeft, ArrowRight, Zap, Download, CheckCircle, Terminal, Package, Settings, Rocket } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Zap, Code, Wrench, Bitcoin, Network, ArrowRight, ExternalLink, Copy, CheckCircle, AlertCircle } from "lucide-react"
 import Link from "next/link"
 
 export default function QuickStartPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-yellow-900 to-slate-900 relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -inset-10 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-        </div>
-      </div>
+    <DocLayout
+      title="Quick Start"
+      description="Get up and running with RGB++ Protocol. Learn how to issue, transfer, and manage xUDT tokens using the RGB++ SDK."
+    >
+      <div className="space-y-12">
+        {/* Prerequisites */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Wrench className="h-8 w-8 mr-3 text-blue-400" />
+            Prerequisites
+          </h2>
 
-      {/* Floating quick start icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[Zap, Terminal, Package, Settings, Rocket].map((Icon, i) => (
-          <div
-            key={i}
-            className="absolute text-white/10 animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          >
-            <Icon className="h-6 w-6" />
-          </div>
-        ))}
-      </div>
-
-      {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <Zap className="h-8 w-8 text-yellow-400 group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 h-8 w-8 text-yellow-400 animate-ping opacity-20">
-                  <Zap className="h-8 w-8" />
+          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-blue-500/20 mb-6">
+            <div className="flex items-start space-x-4">
+              <AlertCircle className="h-6 w-6 text-blue-400 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-semibold text-blue-300 mb-2">Before You Start</h4>
+                <p className="text-blue-200 text-sm mb-4">
+                  Before getting started, refer to the btc-assets-api section to apply for an access token.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-400" />
+                    <span className="text-sm text-gray-300">Node.js 16+ installed</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-400" />
+                    <span className="text-sm text-gray-300">Basic understanding of Bitcoin UTXOs</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-400" />
+                    <span className="text-sm text-gray-300">RGB++ API access token</span>
+                  </div>
                 </div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  Quick Start
-                </h1>
-                <p className="text-xs text-gray-400">Getting Started Guide</p>
-              </div>
-            </Link>
-            <Link
-              href="/"
-              className="text-gray-300 hover:text-yellow-400 transition-all duration-300 hover:scale-105 group"
-            >
-              <ArrowLeft className="h-4 w-4 inline mr-1 group-hover:-translate-x-1 transition-transform duration-300" />
-              Back to Home
-            </Link>
+            </div>
           </div>
-        </div>
-      </header>
 
-      <div className="container mx-auto px-4 py-8 relative z-10">
-        {/* Breadcrumb */}
-        <div className="flex items-center space-x-2 text-sm text-gray-400 mb-8 animate-fade-in-up">
-          <Link href="/" className="hover:text-yellow-400 transition-colors duration-300">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-white">Quick Start</span>
-        </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white">
+                  <Network className="h-6 w-6 mr-2 text-green-400" />
+                  Testnet Access
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-gray-400 text-sm">Testnet API:</span>
+                    <code className="block text-green-400 font-mono text-sm bg-black/20 p-2 rounded mt-1">
+                      https://api.testnet.rgbpp.io
+                    </code>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 text-sm">Signet API:</span>
+                    <code className="block text-blue-400 font-mono text-sm bg-black/20 p-2 rounded mt-1">
+                      https://api.signet.rgbpp.io
+                    </code>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-        {/* Page Header */}
-        <div className="mb-16 text-center animate-fade-in-up animation-delay-200">
-          <Badge className="mb-6 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-300 border-yellow-500/30 hover:scale-105 transition-transform duration-300">
-            <Rocket className="w-4 h-4 mr-2" />
-            Getting Started
-          </Badge>
-          <h1 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white via-yellow-200 to-orange-200 bg-clip-text text-transparent">
-            RGB++ Protocol Quick Start Guide
-          </h1>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Get up and running with RGB++ Protocol in minutes. Follow our step-by-step guide to set up your development
-            environment and deploy your first RGB++ UDT token.
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white">
+                  <Code className="h-6 w-6 mr-2 text-purple-400" />
+                  Installation
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-gray-400 text-sm">Primary SDK (Recommended):</span>
+                    <div className="flex items-center space-x-2 mt-1">
+                      <code className="flex-1 text-purple-400 font-mono text-sm bg-black/20 p-2 rounded">
+                        npm install @ckb-ccc/rgbpp
+                      </code>
+                      <Button size="sm" variant="outline" className="border-gray-600">
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* UDT Operations */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Bitcoin className="h-8 w-8 mr-3 text-orange-400" />
+            UDT Token Operations
+          </h2>
+
+          <p className="text-gray-300 text-lg leading-relaxed mb-8">
+            In CKB, custom tokens are implemented as User-Defined Tokens (UDTs). The following examples demonstrate
+            RGB++ protocol by issuing a RGB++ token using the pre-deployed xUDT Script.
           </p>
-        </div>
 
-        <div className="animate-fade-in-up animation-delay-400">
-          <Tabs defaultValue="installation" className="space-y-8">
-            <TabsList className="grid w-full grid-cols-4 bg-white/5 backdrop-blur-xl border border-white/10 p-1 rounded-xl">
-              <TabsTrigger
-                value="installation"
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-600 data-[state=active]:to-orange-600 data-[state=active]:text-white transition-all duration-300"
-              >
-                Installation
-              </TabsTrigger>
-              <TabsTrigger
-                value="configuration"
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white transition-all duration-300"
-              >
-                Configuration
-              </TabsTrigger>
-              <TabsTrigger
-                value="first-udt"
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-600 data-[state=active]:to-blue-600 data-[state=active]:text-white transition-all duration-300"
-              >
-                First UDT
-              </TabsTrigger>
-              <TabsTrigger
-                value="deployment"
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:text-white transition-all duration-300"
-              >
-                Deployment
-              </TabsTrigger>
-            </TabsList>
+          {/* Token Issuance */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-white mb-6">1. Token Issuance</h3>
 
-            <TabsContent value="installation" className="space-y-8">
-              <div className="grid lg:grid-cols-2 gap-8">
-                {/* System Requirements */}
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <Package className="h-5 w-5 text-blue-600" />
-                      <span>System Requirements</span>
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Minimum system requirements for installation
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-blue-50/10 rounded-lg">
-                        <h4 className="font-semibold text-blue-400 mb-2">Operating System</h4>
-                        <ul className="text-blue-300 text-sm space-y-1">
-                          <li>• Linux (Ubuntu 20.04+, CentOS 8+)</li>
-                          <li>• macOS 11.0+ (Big Sur)</li>
-                          <li>• Windows 10/11 (with WSL2)</li>
-                        </ul>
+            <div className="space-y-6">
+              <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 p-6 rounded-xl border border-white/10">
+                <h4 className="font-semibold text-white mb-4">Process Overview</h4>
+                <div className="grid md:grid-cols-4 gap-4">
+                  {[
+                    { step: "1", title: "UTXO Selection", desc: "Select or create initial single-use seal" },
+                    { step: "2", title: "CKB Transaction", desc: "Create RGB++ lock script with UTXO" },
+                    { step: "3", title: "Bitcoin Transaction", desc: "Submit commitment to Bitcoin network" },
+                    { step: "4", title: "Finalization", desc: "Complete CKB transaction after confirmation" }
+                  ].map((item, index) => (
+                    <div key={index} className="text-center">
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mx-auto mb-2">
+                        {item.step}
                       </div>
-
-                      <div className="p-4 bg-green-50/10 rounded-lg">
-                        <h4 className="font-semibold text-green-400 mb-2">Hardware</h4>
-                        <div className="grid grid-cols-2 gap-2 text-sm text-green-300">
-                          <div>CPU: 4+ cores</div>
-                          <div>RAM: 8GB minimum</div>
-                          <div>Storage: 10GB free</div>
-                          <div>Network: 1Gbps+</div>
-                        </div>
-                      </div>
-
-                      <div className="p-4 bg-purple-50/10 rounded-lg">
-                        <h4 className="font-semibold text-purple-400 mb-2">Dependencies</h4>
-                        <ul className="text-purple-300 text-sm space-y-1">
-                          <li>• Node.js 18+</li>
-                          <li>• Bitcoin Core/Electrum</li>
-                          <li>• CKB node access</li>
-                        </ul>
-                      </div>
-                      <div className="p-4 bg-yellow-50/10 rounded-lg">
-                        <h4 className="font-semibold text-yellow-400 mb-2">RGB++ Specific</h4>
-                        <ul className="text-yellow-300 text-sm space-y-1">
-                          <li>• RGB++ SDK</li>
-                          <li>• CCC (CKB SDK)</li>
-                          <li>• btc-assets-api access</li>
-                        </ul>
-                      </div>
-                      <div className="p-4 bg-orange-50/10 rounded-lg">
-                        <h4 className="font-semibold text-orange-400 mb-2">Network Access</h4>
-                        <ul className="text-orange-300 text-sm space-y-1">
-                          <li>• Bitcoin testnet/mainnet</li>
-                          <li>• CKB testnet/mainnet</li>
-                        </ul>
-                      </div>
+                      <h5 className="font-semibold text-white text-sm mb-1">{item.title}</h5>
+                      <p className="text-gray-400 text-xs">{item.desc}</p>
                     </div>
-                  </CardContent>
-                </Card>
-
-                {/* Installation Steps */}
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <Download className="h-5 w-5 text-green-600" />
-                      <span>Installation Steps</span>
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">Step-by-step installation process</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xs font-bold">
-                          1
-                        </div>
-                        <div>
-                          <h4 className="font-semibold mb-1 text-white">Install Node.js</h4>
-                          <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono mb-2">
-                            nvm install 18
-                          </div>
-                          <p className="text-gray-400 text-sm">Install Node.js version 18 or higher using nvm.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xs font-bold">
-                          2
-                        </div>
-                        <div>
-                          <h4 className="font-semibold mb-1 text-white">Install RGB++ SDK</h4>
-                          <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono mb-2">
-                            npm install rgbpp-sdk
-                          </div>
-                          <p className="text-gray-400 text-sm">Install the RGB++ SDK using npm.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xs font-bold">
-                          3
-                        </div>
-                        <div>
-                          <h4 className="font-semibold mb-1 text-white">Install CCC (CKB SDK)</h4>
-                          <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono mb-2">
-                            npm install @nervosnetwork/ckb-sdk-core
-                          </div>
-                          <p className="text-gray-400 text-sm">Install the CCC (CKB SDK) using npm.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Package Managers */}
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Package Manager Installation</CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Install using your preferred package manager
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-orange-50/10 rounded-lg">
-                        <h4 className="font-semibold text-orange-400 mb-2">npm</h4>
-                        <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono">
-                          npm install rgbpp-sdk @nervosnetwork/ckb-sdk-core
-                        </div>
-                      </div>
-
-                      <div className="p-4 bg-red-50/10 rounded-lg">
-                        <h4 className="font-semibold text-red-400 mb-2">yarn</h4>
-                        <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono">
-                          yarn add rgbpp-sdk @nervosnetwork/ckb-sdk-core
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Docker Installation */}
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Docker Installation</CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Run RGB++ in a containerized environment
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg">
-                        <pre className="text-sm">
-                          {`# Pull the official Node.js image
-docker pull node:18
-
-# Create a Dockerfile
-FROM node:18
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
-COPY . .
-
-CMD [ "node", "index.js" ]`}
-                        </pre>
-                      </div>
-
-                      <div className="p-4 bg-blue-50/10 rounded-lg">
-                        <h4 className="font-semibold text-blue-400 mb-2">Docker Compose</h4>
-                        <p className="text-blue-300 text-sm">
-                          Use Docker Compose for multi-container deployments with databases, and other dependencies.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  ))}
+                </div>
               </div>
-            </TabsContent>
 
-            <TabsContent value="configuration" className="space-y-8">
-              <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">btc-assets-api Token Configuration</CardTitle>
-                    <CardDescription className="text-gray-400">Configure your btc-assets-api token</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                          {`{
-  "btc_assets_api_token": "YOUR_BTC_ASSETS_API_TOKEN"
-}`}
-                        </pre>
-                      </div>
+              <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                <h4 className="font-semibold text-white mb-4 flex items-center">
+                  <Code className="h-5 w-5 mr-2 text-green-400" />
+                  Code Example: Token Issuance
+                </h4>
+                <pre className="text-sm text-gray-300 overflow-x-auto">
+                  <code>{`async function issueUdt({
+  udtScriptInfo,
+  utxoSeal,
+}: {
+  udtScriptInfo: ScriptInfo;
+  utxoSeal?: UtxoSeal;
+}) {
+  // Initialize the RGB++ environment
+  const {
+    rgbppBtcWallet, 
+    rgbppUdtClient, 
+    utxoBasedAccountAddress, 
+    ckbRgbppUnlockSinger,
+  } = initializeRgbppEnv();
 
-                      <div className="p-4 bg-yellow-50/10 rounded-lg">
-                        <h4 className="font-semibold text-yellow-400 mb-2">Configuration File</h4>
-                        <p className="text-yellow-300 text-sm">
-                          Save this configuration as <code className="bg-yellow-200/20 px-1 rounded">config.json</code>
-                          in your project directory.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Bitcoin Wallet Setup</CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Configure your Bitcoin wallet for testnet/mainnet
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg">
-                        <pre className="text-sm">
-                          {`// Example using Bitcoin Core
-bitcoin-cli getnewaddress "rgbpp" bech32
-`}
-                        </pre>
-                      </div>
-
-                      <div className="p-4 bg-green-50/10 rounded-lg">
-                        <h4 className="font-semibold text-green-400 mb-2">Wallet Configuration</h4>
-                        <p className="text-green-300 text-sm">
-                          Ensure your wallet is properly configured for the desired network (testnet/mainnet).
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">CKB Wallet Configuration</CardTitle>
-                    <CardDescription className="text-gray-400">Configure your CKB wallet</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                          {`// Example using ckb-cli
-ckb-cli wallet new --type secp256k1
-`}
-                        </pre>
-                      </div>
-
-                      <div className="p-4 bg-purple-50/10 rounded-lg">
-                        <h4 className="font-semibold text-purple-400 mb-2">Wallet Setup</h4>
-                        <p className="text-purple-300 text-sm">
-                          Set up your CKB wallet and ensure it&#39;s connected to the correct network.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Network Endpoint Configuration</CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Configure network endpoints for Bitcoin and CKB
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg">
-                        <pre className="text-sm">
-                          {`{
-  "bitcoin": {
-    "rpc_url": "YOUR_BITCOIN_RPC_URL",
-    "network": "testnet" // or "mainnet"
-  },
-  "ckb": {
-    "rpc_url": "YOUR_CKB_RPC_URL",
-    "indexer_url": "YOUR_CKB_INDEXER_URL"
+  // Prepare the initial single-use seal and corresponding RGB++ cells
+  if (!utxoSeal) {
+    utxoSeal = await rgbppBtcWallet.prepareUtxoSeal();
   }
-}`}
-                        </pre>
-                      </div>
+  const rgbppIssuanceCells = await prepareRgbppCells(utxoSeal, rgbppUdtClient);
 
-                      <div className="flex items-center space-x-2 p-3 bg-green-50/10 rounded">
-                        <CheckCircle className="h-5 w-5 text-green-400" />
-                        <span className="text-green-300 text-sm">
-                          Ensure your network endpoints are correctly configured for seamless operation.
-                        </span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+  // Construct the partial CKB transaction
+  const ckbPartialTx = await rgbppUdtClient.issuanceCkbPartialTx({
+    token: udtToken,
+    amount: issuanceAmount,
+    rgbppLiveCells: rgbppIssuanceCells,
+    udtScriptInfo,
+  });
+
+  // Build and submit the Bitcoin transaction
+  const { psbt, indexedCkbPartialTx } = await rgbppBtcWallet.buildPsbt({
+    ckbPartialTx,
+    ckbClient,
+    rgbppUdtClient,
+    btcChangeAddress: utxoBasedAccountAddress,
+    receiverBtcAddresses: [utxoBasedAccountAddress],
+  });
+  
+  const btcTxId = await rgbppBtcWallet.signAndSendTx(psbt);
+  
+  // Complete the CKB transaction
+  const ckbPartialTxInjected = await rgbppUdtClient.injectTxIdToRgbppCkbTx(
+    indexedCkbPartialTx,
+    btcTxId,
+  );
+  
+  const rgbppSignedCkbTx = await ckbRgbppUnlockSinger.signTransaction(ckbPartialTxInjected);
+  await rgbppSignedCkbTx.completeFeeBy(ckbSigner);
+  const ckbFinalTx = await ckbSigner.signTransaction(rgbppSignedCkbTx);
+  const txHash = await ckbSigner.client.sendTransaction(ckbFinalTx);
+  
+  return txHash;
+}`}</code>
+                </pre>
               </div>
-            </TabsContent>
 
-            <TabsContent value="first-udt" className="space-y-8">
-              <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2 text-white">
-                      <Terminal className="h-5 w-5 text-green-600" />
-                      <span>UDT Issuance</span>
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">Issue your first RGB++ token</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                          {`// Example code for issuing RGB++ tokens
-async function issueToken() {
-  // Implementation details here
-  console.log("Issuing RGB++ token...");
-}
-
-issueToken();
-`}
-                        </pre>
-                      </div>
-
-                      <div className="p-4 bg-green-50/10 rounded-lg">
-                        <h4 className="font-semibold text-green-400 mb-2">Run Issuance</h4>
-                        <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono">node issue.js</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">UDT Transfer</CardTitle>
-                    <CardDescription className="text-gray-400">Transfer RGB++ assets on Bitcoin</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                          {`// Example code for transferring RGB++ assets
-async function transferToken() {
-  // Implementation details here
-  console.log("Transferring RGB++ token...");
-}
-
-transferToken();
-`}
-                        </pre>
-                      </div>
-
-                      <div className="p-4 bg-blue-50/10 rounded-lg">
-                        <h4 className="font-semibold text-blue-400 mb-2">Run Transfer</h4>
-                        <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono">
-                          node transfer.js
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Leap to CKB</CardTitle>
-                    <CardDescription className="text-gray-400">Moving assets from Bitcoin to CKB</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                          {`// Example code for moving assets from Bitcoin to CKB
-async function leapToCKB() {
-  // Implementation details here
-  console.log("Moving assets from Bitcoin to CKB...");
-}
-
-leapToCKB();
-`}
-                        </pre>
-                      </div>
-
-                      <div className="p-4 bg-purple-50/10 rounded-lg">
-                        <h4 className="font-semibold text-purple-400 mb-2">Run Leap</h4>
-                        <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono">node leap.js</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Time Lock Unlock</CardTitle>
-                    <CardDescription className="text-gray-400">Unlocking assets on CKB</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                          {`// Example code for unlocking assets on CKB
-async function unlockAssets() {
-  // Implementation details here
-  console.log("Unlocking assets on CKB...");
-}
-
-unlockAssets();
-`}
-                        </pre>
-                      </div>
-
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xs font-bold">
-                          1
-                        </div>
-                        <div>
-                          <h4 className="font-semibold mb-1 text-white">Run Unlock</h4>
-                          <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono mb-2">
-                            node unlock.js
-                          </div>
-                          <p className="text-gray-400 text-sm">Run the unlock script to unlock assets on CKB.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="flex items-center space-x-4">
+                <Button size="sm" variant="outline" className="border-gray-600 text-gray-300">
+                  <ExternalLink className="h-4 w-4 mr-1" />
+                  View Bitcoin Transaction
+                </Button>
+                <Button size="sm" variant="outline" className="border-gray-600 text-gray-300">
+                  <ExternalLink className="h-4 w-4 mr-1" />
+                  View CKB Transaction
+                </Button>
               </div>
-            </TabsContent>
+            </div>
+          </div>
 
-            <TabsContent value="deployment" className="space-y-8">
-              <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Production Deployment</CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Deploy your RGB++ application to production
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-blue-50/10 rounded-lg">
-                        <h4 className="font-semibold text-blue-400 mb-2">Considerations</h4>
-                        <ul className="text-blue-300 text-sm space-y-1">
-                          <li>• Secure API key management</li>
-                          <li>• Reliable network endpoints</li>
-                          <li>• Scalable infrastructure</li>
-                        </ul>
-                      </div>
+          {/* Token Transfer */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-white mb-6">2. Token Transfer on Bitcoin</h3>
 
-                      <div className="p-4 bg-green-50/10 rounded-lg">
-                        <h4 className="font-semibold text-green-400 mb-2">Best Practices</h4>
-                        <ul className="text-green-300 text-sm space-y-1">
-                          <li>• Use environment variables for configuration</li>
-                          <li>• Implement robust error handling</li>
-                          <li>• Monitor transaction status</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+            <div className="space-y-6">
+              <p className="text-gray-300">
+                The process of transferring RGB++ xUDT tokens on Bitcoin follows a similar pattern to the issuance process.
+                The unique ID obtained during issuance is used to construct the xUDT script that identifies the token.
+              </p>
 
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Monitoring RGB++ Transactions</CardTitle>
-                    <CardDescription className="text-gray-400">Monitor your RGB++ transactions</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                          {`// Example code for monitoring RGB++ transactions
-async function monitorTransactions() {
-  // Implementation details here
-  console.log("Monitoring RGB++ transactions...");
-}
+              <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                <h4 className="font-semibold text-white mb-4 flex items-center">
+                  <Code className="h-5 w-5 mr-2 text-blue-400" />
+                  Code Example: Token Transfer
+                </h4>
+                <pre className="text-sm text-gray-300 overflow-x-auto">
+                  <code>{`async function transferUdt({
+  udtScriptInfo,
+  receivers,
+}: {
+  udtScriptInfo: ScriptInfo;
+  receivers: RgbppBtcReceiver[];
+}) {
+  const udt = new ccc.udt.Udt(
+    udtScriptInfo.cellDep.outPoint,
+    udtScriptInfo.script,
+  );
+  
+  // Complete the outputs
+  let { res: tx } = await udt.transfer(
+    ckbSigner as unknown as ccc.Signer,
+    receivers.map((receiver) => ({
+      to: rgbppUdtClient.buildPseudoRgbppLockScript(),
+      amount: ccc.fixedPointFrom(receiver.amount),
+    })),
+  );
+  
+  // Auto complete the xUDT inputs
+  const txWithInputs = await udt.completeChangeToLock(
+    tx,
+    ckbRgbppUnlockSinger,
+    rgbppUdtClient.buildPseudoRgbppLockScript(),
+  );
 
-monitorTransactions();
-`}
-                        </pre>
-                      </div>
-
-                      <div className="p-4 bg-purple-50/10 rounded-lg">
-                        <h4 className="font-semibold text-purple-400 mb-2">Run Monitor</h4>
-                        <div className="bg-gray-900/50 text-gray-300 p-2 rounded text-xs font-mono">
-                          node monitor.js
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">Error Handling & Recovery</CardTitle>
-                    <CardDescription className="text-gray-400">Handle errors and recover from failures</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-yellow-50/10 rounded-lg">
-                        <h4 className="font-semibold text-yellow-400 mb-2">Error Handling</h4>
-                        <ul className="text-yellow-300 text-sm space-y-1">
-                          <li>• Implement try-catch blocks</li>
-                          <li>• Log errors for debugging</li>
-                          <li>• Provide user-friendly error messages</li>
-                        </ul>
-                      </div>
-
-                      <div className="p-4 bg-orange-50/10 rounded-lg">
-                        <h4 className="font-semibold text-orange-400 mb-2">Recovery Strategies</h4>
-                        <ul className="text-orange-300 text-sm space-y-1">
-                          <li>• Implement retry mechanisms</li>
-                          <li>• Use transaction rollbacks</li>
-                          <li>• Monitor and alert on failures</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-white">RGB++ Development Best Practices</CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Follow best practices for RGB++ development
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-red-50/10 rounded-lg">
-                        <h4 className="font-semibold text-red-400 mb-2">Security</h4>
-                        <ul className="text-red-300 text-sm space-y-1">
-                          <li>• Secure API key management</li>
-                          <li>• Validate user inputs</li>
-                          <li>• Protect against replay attacks</li>
-                        </ul>
-                      </div>
-
-                      <div className="p-4 bg-gray-50/10 rounded-lg">
-                        <h4 className="font-semibold text-gray-400 mb-2">Performance</h4>
-                        <ul className="text-gray-300 text-sm space-y-1">
-                          <li>• Optimize transaction sizes</li>
-                          <li>• Use efficient data structures</li>
-                          <li>• Cache frequently accessed data</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+  // Continue with Bitcoin transaction submission...
+}`}</code>
+                </pre>
               </div>
-            </TabsContent>
-          </Tabs>
-        </div>
+            </div>
+          </div>
+
+          {/* Leap to CKB */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-white mb-6">3. Leap to CKB</h3>
+
+            <div className="space-y-6">
+              <p className="text-gray-300">
+                The process of leaping xUDT from Bitcoin to CKB follows the same pattern as regular transfer,
+                with one key distinction: after the leap, the lock script changes from <code className="text-orange-400">RGBPP_Lock</code> to <code className="text-blue-400">BTC_TIME_lock</code>.
+              </p>
+
+              <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                <h4 className="font-semibold text-white mb-4 flex items-center">
+                  <Code className="h-5 w-5 mr-2 text-purple-400" />
+                  Code Example: Leap to CKB
+                </h4>
+                <pre className="text-sm text-gray-300 overflow-x-auto">
+                  <code>{`async function btcUdtToCkb({
+  udtScriptInfo,
+  receivers,
+}: {
+  udtScriptInfo: ScriptInfo;
+  receivers: { address: string; amount: bigint }[];
+}) {
+  const udt = new ccc.udt.Udt(
+    udtScriptInfo.cellDep.outPoint,
+    udtScriptInfo.script,
+  );
+
+  let { res: tx } = await udt.transfer(
+    ckbSigner as unknown as ccc.Signer,
+    await Promise.all(
+      receivers.map(async (receiver) => ({
+        // build the BTC_TIME_lock script
+        to: await rgbppUdtClient.buildBtcTimeLockScript(receiver.address),
+        amount: ccc.fixedPointFrom(receiver.amount),
+      })),
+    ),
+  );
+
+  // Continue with transaction processing...
+}`}</code>
+                </pre>
+              </div>
+            </div>
+          </div>
+
+          {/* Unlock Time Lock */}
+          <div>
+            <h3 className="text-2xl font-semibold text-white mb-6">4. Unlocking BTC_TIME_lock</h3>
+
+            <div className="space-y-6">
+              <p className="text-gray-300">
+                This process is straightforward. Wait for the required number of confirmations (default is 6) before
+                unlocking the <code className="text-blue-400">BTC_TIME_lock</code>. After unlocking, the xUDT becomes a standard CKB asset.
+              </p>
+
+              <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 p-4 rounded-lg border border-yellow-500/20">
+                <div className="flex items-start space-x-3">
+                  <AlertCircle className="h-5 w-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-semibold text-yellow-300 mb-1">Important Note</h5>
+                    <p className="text-yellow-200 text-sm">
+                      This process does not require any Bitcoin transaction. Only CKB transaction is needed to unlock the time lock.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* API Configuration */}
+        <section>
+          <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <Wrench className="h-8 w-8 mr-3 text-green-400" />
+            API Configuration
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+              <CardHeader>
+                <CardTitle className="text-white">Testnet Configuration</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <label className="text-gray-400 text-sm">API Endpoint:</label>
+                  <code className="block text-green-400 font-mono text-sm bg-black/20 p-2 rounded mt-1">
+                    https://api.testnet.rgbpp.io
+                  </code>
+                </div>
+                <div>
+                  <label className="text-gray-400 text-sm">Network:</label>
+                  <span className="block text-white mt-1">Bitcoin Testnet3 + CKB Testnet</span>
+                </div>
+                <div>
+                  <label className="text-gray-400 text-sm">Token Generation:</label>
+                  <span className="block text-white mt-1">Available via /token/generate API</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/5 backdrop-blur-xl border-white/10">
+              <CardHeader>
+                <CardTitle className="text-white">Mainnet Configuration</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <label className="text-gray-400 text-sm">Access:</label>
+                  <span className="block text-white mt-1">Whitelisted users only</span>
+                </div>
+                <div>
+                  <label className="text-gray-400 text-sm">Network:</label>
+                  <span className="block text-white mt-1">Bitcoin Mainnet + CKB Mainnet</span>
+                </div>
+                <div>
+                  <label className="text-gray-400 text-sm">Contact:</label>
+                  <span className="block text-white mt-1">Request access token from team</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
 
         {/* Next Steps */}
-        <div className="mt-12 pt-8 border-t border-white/10 animate-fade-in-up animation-delay-600">
-          <Card className="bg-white/5 backdrop-blur-xl border-white/10">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2 text-white">
-                <CheckCircle className="h-5 w-5 text-green-600" />
-                <span>Congratulations!</span>
-              </CardTitle>
-              <CardDescription className="text-gray-400">
-                You&apos;ve successfully set up and deployed your first RGB++ application
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-4 bg-blue-50/10 rounded-lg text-center">
-                  <h4 className="font-semibold text-blue-400 mb-2">Explore Examples</h4>
-                  <p className="text-blue-300 text-sm mb-3">Check out more advanced examples and use cases</p>
-                  <Link href="/examples">
-                    <Button
-                      variant="glass"
-                      size="sm"
-                      effect="scale"
-                    >
-                      View Examples
-                    </Button>
-                  </Link>
-                </div>
-
-                <div className="p-4 bg-green-50/10 rounded-lg text-center">
-                  <h4 className="font-semibold text-green-400 mb-2">Read Documentation</h4>
-                  <p className="text-green-300 text-sm mb-3">Dive deeper into core concepts and components</p>
-                  <Link href="/concepts">
-                    <Button
-                      variant="glass"
-                      size="sm"
-                      effect="scale"
-                    >
-                      Learn More
-                    </Button>
-                  </Link>
-                </div>
-
-                <div className="p-4 bg-purple-50/10 rounded-lg text-center">
-                  <h4 className="font-semibold text-purple-400 mb-2">Join Community</h4>
-                  <p className="text-purple-300 text-sm mb-3">Get help and share your experiences</p>
-                  <Link href="/discord">
-                    <Button
-                      variant="glass"
-                      size="sm"
-                      effect="scale"
-                    >
-                      Join Discord
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex justify-between items-center mt-8 animate-fade-in-up animation-delay-700">
-          <Link href="/components">
-            <Button
-              variant="glass"
-              effect="scale"
-              className="group"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Previous: Core Components
-            </Button>
-          </Link>
-
-          <Link href="/">
-            <Button
-              variant="warning"
-              effect="glow"
-              className="group"
-            >
-              Back to Home
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </Link>
-        </div>
+        <section className="bg-gradient-to-r from-orange-500/10 to-red-500/10 p-8 rounded-xl border border-orange-500/20">
+          <h3 className="text-2xl font-bold text-white mb-4">What's Next?</h3>
+          <p className="text-gray-300 mb-6">
+            Now that you understand the basics, dive deeper into RGB++ concepts and explore advanced features.
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link href="/concepts">
+              <Button variant="cyber" effect="scale" className="w-full">
+                <Bitcoin className="mr-2 h-4 w-4" />
+                Core Concepts
+              </Button>
+            </Link>
+            <Link href="/examples">
+              <Button variant="glass" effect="scale" className="w-full">
+                <Code className="mr-2 h-4 w-4" />
+                More Examples
+              </Button>
+            </Link>
+            <Link href="/components">
+              <Button variant="gradient" effect="scale" className="w-full shadow-lg shadow-purple-500/30">
+                <Network className="mr-2 h-4 w-4" />
+                Components
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </section>
       </div>
-    </div>
+    </DocLayout>
   )
 }
