@@ -5,6 +5,40 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Network, Book, Zap, Cpu, FileText, Code, Layers, ArrowLeft, Lock, Shield, Server, Hash, Database, Link as LinkIcon } from "lucide-react"
 
+// RGB++ Logo SVG Component
+const RgbppIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clipPath="url(#clip0_430_320)">
+      <g style={{ mixBlendMode: 'screen' as const }}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M37.6026 7.13041C38.3735 10.0075 36.6661 12.9648 33.789 13.7357L2.53245 22.1109C-0.344637 22.8818 -3.30193 21.1744 -4.07284 18.2973C-4.84375 15.4202 -3.13636 12.4629 -0.259271 11.692L30.9973 3.31685C33.8744 2.54593 36.8317 4.25332 37.6026 7.13041Z" fill="url(#paint0_linear_430_320)" />
+      </g>
+      <g style={{ mixBlendMode: 'screen' as const }}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M5.7126 35.2364C3.60642 33.1302 3.60642 29.7155 5.7126 27.6093L28.594 4.72788C30.7002 2.62171 34.115 2.6217 36.2211 4.72788C38.3273 6.83405 38.3273 10.2488 36.2211 12.355L13.3397 35.2364C11.2336 37.3426 7.81878 37.3426 5.7126 35.2364Z" fill="url(#paint1_linear_430_320)" />
+      </g>
+      <g style={{ mixBlendMode: 'screen' as const }}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M22.6218 44.9925C19.7447 44.2216 18.0373 41.2643 18.8082 38.3873L27.1834 7.13068C27.9543 4.25359 30.9116 2.5462 33.7887 3.31711C36.6658 4.08802 38.3732 7.04531 37.6023 9.9224L29.2271 41.179C28.4562 44.0561 25.4989 45.7635 22.6218 44.9925Z" fill="url(#paint2_linear_430_320)" />
+      </g>
+    </g>
+    <defs>
+      <linearGradient id="paint0_linear_430_320" x1="16.7749" y1="7.86523" x2="16.7749" y2="17.7761" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#F3674F" />
+        <stop offset="1" stopColor="#F3674F" stopOpacity="0" />
+      </linearGradient>
+      <linearGradient id="paint1_linear_430_320" x1="20.9668" y1="8.54199" x2="20.9668" y2="31.4235" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#38E539" />
+        <stop offset="1" stopColor="#38E539" stopOpacity="0" />
+      </linearGradient>
+      <linearGradient id="paint2_linear_430_320" x1="28.205" y1="7.86523" x2="28.205" y2="39.3594" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#0166FF" />
+        <stop offset="1" stopColor="#0166FF" stopOpacity="0" />
+      </linearGradient>
+      <clipPath id="clip0_430_320">
+        <rect width="40" height="40" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
 interface DocLayoutProps {
   children: ReactNode
   title: string
@@ -59,14 +93,14 @@ const navigationItems = [
 
 export function DocLayout({ children, title, description }: DocLayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black">
       {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-xl sticky top-0 z-50">
+      <header className="border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <Network className="h-8 w-8 text-orange-400 group-hover:scale-110 transition-transform duration-300" />
+              <div className="p-1 rounded-lg bg-gray-800/50 group-hover:bg-gray-700/50 transition-colors duration-200">
+                <RgbppIcon className="w-8 h-8" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">RGB++</h1>
@@ -86,11 +120,11 @@ export function DocLayout({ children, title, description }: DocLayoutProps) {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-64 h-screen overflow-y-auto bg-gradient-to-b from-black/40 via-black/30 to-black/40 backdrop-blur-xl border-r border-purple-500/20 sticky top-[73px] shadow-2xl shadow-purple-500/10">
+        <aside className="w-64 h-screen overflow-y-auto bg-gray-900/80 backdrop-blur-sm border-r border-gray-800/30 sticky top-[73px]">
           <nav className="p-6">
             {navigationItems.map((section, sectionIndex) => (
               <div key={sectionIndex} className="mb-8">
-                <h3 className="text-xs font-bold text-transparent bg-gradient-to-r from-orange-400 to-purple-400 bg-clip-text uppercase tracking-wider mb-4 px-3">
+                <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-3">
                   {section.title}
                 </h3>
                 <ul className="space-y-1">
@@ -99,22 +133,12 @@ export function DocLayout({ children, title, description }: DocLayoutProps) {
                       <Link
                         href={item.href}
                         className={cn(
-                          "flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 group relative overflow-hidden",
-                          "text-gray-200 hover:text-white",
-                          "hover:bg-gradient-to-r hover:from-purple-500/20 hover:via-orange-500/20 hover:to-purple-500/20",
-                          "hover:border hover:border-purple-400/30",
-                          "hover:shadow-lg hover:shadow-purple-500/20",
-                          "hover:scale-105 hover:translate-x-1",
-                          "before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent",
-                          "before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                          "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-colors duration-200",
+                          "text-gray-300 hover:text-white hover:bg-gray-800/50"
                         )}
                       >
-                        <div className="relative z-10 flex items-center space-x-3 w-full">
-                          <item.icon className="h-4 w-4 text-orange-400 group-hover:text-purple-300 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-                          <span className="group-hover:font-semibold transition-all duration-300">{item.title}</span>
-                        </div>
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl blur-sm"></div>
+                        <item.icon className="h-4 w-4 text-gray-500" />
+                        <span>{item.title}</span>
                       </Link>
                     </li>
                   ))}

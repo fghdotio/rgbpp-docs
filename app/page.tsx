@@ -98,9 +98,6 @@ export default function HomePage() {
               <Link href="/introduction" className="text-gray-300 hover:text-orange-400 transition-colors">
                 Documentation
               </Link>
-              <Link href="/examples" className="text-gray-300 hover:text-green-400 transition-colors">
-                Examples
-              </Link>
               <a href="https://github.com/ckb-cell/rgbpp" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors flex items-center space-x-1">
                 <span>GitHub</span>
                 <ExternalLink className="w-4 h-4" />
@@ -123,14 +120,18 @@ export default function HomePage() {
               enabling complex programmable logic while preserving Bitcoin's security model.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 border-0 shadow-lg shadow-orange-500/25">
-                <Book className="mr-2 h-5 w-5" />
-                Read Documentation
-              </Button>
-              <Button size="lg" variant="outline" className="border-gray-600 bg-gray-900/50 hover:bg-gradient-to-r hover:from-green-500/10 hover:to-blue-500/10 hover:border-gray-500 backdrop-blur-sm">
-                <Code className="mr-2 h-5 w-5" />
-                View Examples
-              </Button>
+              <Link href="/introduction">
+                <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 border-0 shadow-lg shadow-orange-500/25">
+                  <Book className="mr-2 h-5 w-5" />
+                  Read Documentation
+                </Button>
+              </Link>
+              <a href="https://github.com/ckb-cell/rgbpp" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="border-gray-600 bg-gray-900/50 hover:bg-gradient-to-r hover:from-green-500/10 hover:to-blue-500/10 hover:border-gray-500 backdrop-blur-sm">
+                  <Code className="mr-2 h-5 w-5" />
+                  View GitHub
+                </Button>
+              </a>
             </div>
           </div>
 
@@ -475,7 +476,7 @@ export default function HomePage() {
                 <li><Link href="/introduction" className="text-gray-400 hover:text-orange-400 text-sm transition-colors">Introduction</Link></li>
                 <li><Link href="/quickstart" className="text-gray-400 hover:text-orange-400 text-sm transition-colors">Quick Start</Link></li>
                 <li><Link href="/concepts" className="text-gray-400 hover:text-orange-400 text-sm transition-colors">Core Concepts</Link></li>
-                <li><Link href="/examples" className="text-gray-400 hover:text-orange-400 text-sm transition-colors">Examples</Link></li>
+                <li><Link href="/source-code" className="text-gray-400 hover:text-orange-400 text-sm transition-colors">Resources</Link></li>
               </ul>
             </div>
 

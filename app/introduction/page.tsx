@@ -34,12 +34,12 @@ export default function IntroductionPage() {
               of ownership for RGB++ assets.
             </p>
 
-            <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 p-6 rounded-xl border border-orange-500/20">
+            <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700/30">
               <div className="flex items-start space-x-4">
                 <Shield className="h-6 w-6 text-orange-400 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-orange-300 mb-2">Key Innovation</h4>
-                  <p className="text-orange-200 text-sm">
+                  <p className="text-gray-300 text-sm">
                     When a single-use seal is consumed, the ownership of the RGB++ asset is guaranteed to be
                     transferred to the new UTXO or the wallet controlling it, ensuring cryptographic security.
                   </p>
@@ -155,12 +155,12 @@ export default function IntroductionPage() {
               </Card>
             </div>
 
-            <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-6 rounded-xl border border-green-500/20">
+            <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700/30">
               <div className="flex items-start space-x-4">
                 <Shield className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-green-300 mb-2">Enhanced Security Model</h4>
-                  <p className="text-green-200 text-sm">
+                  <p className="text-gray-300 text-sm">
                     RGB++ leverages CKB's Turing-complete script system to implement asset security checks.
                     Users only need to verify relevant transactions on CKB to confirm the correctness of
                     RGB++ transaction state calculations, significantly reducing complexity.
@@ -174,7 +174,7 @@ export default function IntroductionPage() {
         {/* Typical Transaction Flow */}
         <section>
           <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
-            <Workflow className="h-8 w-8 mr-3 text-purple-400" />
+            <Workflow className="h-8 w-8 mr-3 text-green-400" />
             Typical Transaction Flow
           </h2>
           <div className="space-y-6">
@@ -211,7 +211,7 @@ export default function IntroductionPage() {
                   title: "On-chain Verification",
                   description: "Validate UTXO spending, Bitcoin transaction existence, and state transitions",
                   icon: CheckCircle,
-                  color: "text-purple-400"
+                  color: "text-blue-400"
                 }
               ].map((step, index) => (
                 <Card key={index} className="bg-white/5 backdrop-blur-xl border-white/10">
@@ -229,12 +229,12 @@ export default function IntroductionPage() {
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+            <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700/30">
               <div className="flex items-start space-x-4">
-                <Lock className="h-6 w-6 text-purple-400 flex-shrink-0 mt-1" />
+                <Lock className="h-6 w-6 text-blue-400 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-purple-300 mb-2">Isomorphic Binding</h4>
-                  <p className="text-purple-200 text-sm">
+                  <h4 className="font-semibold text-blue-300 mb-2">Isomorphic Binding</h4>
+                  <p className="text-gray-300 text-sm">
                     The commitment formula: <code className="bg-black/20 px-2 py-1 rounded text-xs">commitment = hash(CKB_TX_B | btc_utxo#1 | btc_utxo#2)</code>
                     <br />This establishes a secure binding between Bitcoin UTXOs and CKB cells through RGB++ Script arguments.
                   </p>
@@ -247,7 +247,7 @@ export default function IntroductionPage() {
         {/* Key Features */}
         <section>
           <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
-            <Zap className="h-8 w-8 mr-3 text-yellow-400" />
+            <Zap className="h-8 w-8 mr-3 text-orange-400" />
             Key Features
           </h2>
 
@@ -269,7 +269,7 @@ export default function IntroductionPage() {
                 icon: Code,
                 title: "Turing-Complete Scripts",
                 description: "Leverage CKB's RISC-V based virtual machine for sophisticated smart contract logic.",
-                color: "text-purple-400"
+                color: "text-green-400"
               },
               {
                 icon: Layers,
@@ -281,13 +281,13 @@ export default function IntroductionPage() {
                 icon: Shield,
                 title: "SPV Verification",
                 description: "Bitcoin light client implementation on CKB enables secure transaction verification.",
-                color: "text-red-400"
+                color: "text-orange-400"
               },
               {
                 icon: Zap,
                 title: "Enhanced Validation",
                 description: "Blockchain-enhanced state validation that maintains privacy while ensuring security.",
-                color: "text-cyan-400"
+                color: "text-blue-400"
               }
             ].map((feature, index) => (
               <Card key={index} className="bg-white/5 backdrop-blur-xl border-white/10 hover:border-white/20 transition-all duration-300">
@@ -340,8 +340,8 @@ export default function IntroductionPage() {
 
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-white">Technical Innovation</h3>
-                <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-4 rounded-lg border border-blue-500/20">
-                  <p className="text-blue-200 text-sm leading-relaxed">
+                <div className="bg-gray-800/30 p-4 rounded-lg border border-gray-700/30">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     RGB++ takes a different approach by leveraging CKB's Turing-complete script system to implement
                     asset security checks. This design offers a more straightforward and accessible verification
                     process for all users while maintaining system transparency.
@@ -353,7 +353,7 @@ export default function IntroductionPage() {
         </section>
 
         {/* Next Steps */}
-        <section className="bg-gradient-to-r from-orange-500/10 to-red-500/10 p-8 rounded-xl border border-orange-500/20">
+        <section className="bg-gray-800/30 p-8 rounded-xl border border-gray-700/30">
           <h3 className="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
           <p className="text-gray-300 mb-6">
             Now that you understand what RGB++ is and how it works, explore the ecosystem and start building with Bitcoin's programmable layer.
